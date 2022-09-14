@@ -13,9 +13,9 @@ only_build_toc_files        : true
 
 # url should be the published url for the book
 repository:
-  url: https://github.com/xwshiba/ope
+  url: https://github.com/xwshiba/test-book-test
   path_to_book: content
-  branch: test-book
+  branch: main
 
 html:
   use_repository_button: true
