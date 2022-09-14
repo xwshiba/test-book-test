@@ -1,0 +1,20 @@
+format: jb-book
+root: intro_tb
+parts:
+- caption: 'Special Displays'
+  numbered: true
+  chapters:
+  - file: 01_special_displays/special_displays
+- caption: 'Slides Templates'
+  numbered: true
+  chapters:
+  - file: 02_slides_template/layout_example
+- caption: 'Animation Examples'
+  numbered: true
+  chapters:
+  - file: 03_animations_examples/animations
+# - caption: 'Part 3'
+#   numbered: true
+#   chapters:
+#   - file: part3/ch1
+#   - file: part3/ch2
