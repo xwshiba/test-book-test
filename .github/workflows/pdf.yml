@@ -36,6 +36,14 @@ jobs:
     - name: Build PDF from HTML (Docs)
       run: |
         jb build --builder pdfhtml -n --keep-going --path-output ${PWD}/docs --config ${PWD}/content/tb_config.yml --toc ${PWD}/content/tb_toc.yml content
+    - name: Copy images
+      run: |
+        -mkdir -p ${PWD}/docs/_build/html/images
+        -cp -r ${PWD}/content/images/* ${PWD}/docs/_build/html/images
+    - name: Fix Image links
+      run: |
+        ./fixlinks.sh ${PWD}/docs/_build/html
+        
     - uses: actions/upload-artifact@v3
       with:
         name: PDF_HTML
