@@ -1,3 +1,8 @@
+# PDF Build for Test Book Visual Check
+# Relies on Jupyter Book build tools to build the pdf
+# Make sure the review the Log for warnings or errors
+# reference: https://github.com/executablebooks/jupyter-book/blob/master/.github/workflows/pdf.yml
+
 name: Build PDF of Docs
 
 on:
@@ -20,34 +25,28 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
         cache: "pip"
+        
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
         pip install wheel
         # pip install -e .[sphinx,pdfhtml]
         pip install -r requirements.txt
-#     - name: Install Headless Chrome dependencies
-#       run: |
-#         sudo apt-get update
-#         sudo apt-get install -yq $(cat .github/workflows/pyppeteer_reqs.txt)
+
     - name: Install Chromium
       run: |
         pip install pyppeteer
+    
+    # image links might break based on different syntax
     - name: Build PDF from HTML (Docs)
       run: |
         jb build --builder pdfhtml -n --keep-going --path-output ${PWD}/docs --config ${PWD}/content/tb_config.yml --toc ${PWD}/content/tb_toc.yml content
-    - name: Copy images
-      run: |
-        mkdir -p ${PWD}/docs/_build/html/images
-        cp -r ${PWD}/content/images/* ${PWD}/docs/_build/html/images
-    - name: Fix Image links
-      run: |
-        ./fixlinks.sh ${PWD}/docs/_build/html
         
     - uses: actions/upload-artifact@v3
       with:
         name: PDF_HTML
         path: docs/_build/pdf/book.pdf
+        
     # clean build files
     - name: Clean build files
       run: |
