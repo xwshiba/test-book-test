@@ -1,14 +1,6 @@
 format: jb-book
 root: intro_tb
-# chapters: 
-#   - title: Special Displays
-#     file: 01_special_displays/special_displays
-#   - title: Slides Templates
-#     file: 02_slides_template/layout_example
-#   - title: Animation Examples
-#     file: 03_animations_examples/animations
-    
-# if I use the following structure, .fixlinks.sh will give me warning for broken links
+
 parts:
 - caption: 'Special Displays'
   numbered: true
