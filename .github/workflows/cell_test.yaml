@@ -6,7 +6,8 @@ name: cell-test
 
 # run on every push
 on:
-  push
+  push:
+    branches: [main, master]
 
 # This job installs dependencies, check the cells, and clean the built files 
 jobs:
@@ -33,7 +34,10 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: ERROR_LOGS
-        path: textbook/_build/html/reports/
+        path: |
+          textbook/_build/html/reports/
+          lecturenotes/_build/html/reports/
+          labmanual/_build/html/reports/
         if-no-files-found: warn # 'warn' or 'ignore' are also available, defaults to `warn`
     
     # clean build files
