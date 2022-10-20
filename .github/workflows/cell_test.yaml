@@ -27,7 +27,7 @@ jobs:
         
     - name: Build check the textbook
       run: |
-        jupyter-book build -v --all -n --keep-going --path-output ${PWD}/textbook --config ${PWD}/content/tb_config.yml --toc ${PWD}/content/tb_toc.yml content
+        make build
     
     # upload error logs if there is any
     - uses: actions/upload-artifact@v3
